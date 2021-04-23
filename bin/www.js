@@ -1,13 +1,9 @@
 #!/usr/bin/env node
-
-/**
- * Module dependencies.
- */
 require('dotenv').config();
 
 const http = require('http');
 http.createServer(function (req, res) {
-    res.write('Hello there!'); //write a response to the client
+    res.write('Hi there!'); //write a response to the client
     res.end(); //end the response
 }).listen(process.env.PORT || 3000);
 
@@ -40,7 +36,7 @@ bot.on('message', msg => {
             translate.translateText(params, function (err, data) {
                 if (err) console.log(err, err.stack);
                 else {
-                    if(data.SourceLanguageCode !== 'en'){
+                    if(data.SourceLanguageCode !== 'en' && data.TranslatedText !== Text){
                         // console.log(data);
                         msg.channel.send(data.TranslatedText);
                     }
