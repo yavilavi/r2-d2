@@ -3,8 +3,14 @@
 /**
  * Module dependencies.
  */
-
 require('dotenv').config();
+
+const http = require('http');
+http.createServer(function (req, res) {
+    res.write('Hello there!'); //write a response to the client
+    res.end(); //end the response
+}).listen(process.env.PORT || 3000);
+
 
 const debug = require('debug')('r2-d2:brain');
 const Discord = require('discord.js');
